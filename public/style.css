@@ -1,0 +1,86 @@
+*, body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Nunito', sans-serif;
+    background: #dadada;
+    height: 100vh;
+}
+
+a.navbar-brand svg{
+ transition: ease-in 0.2s;    
+}
+
+a.navbar-brand span{
+    transition: ease-in 0.2s;
+}
+
+a.navbar-brand:hover svg {
+    fill: #4a5dff; /* Change color of SVG on hover */
+ 
+}
+
+a.navbar-brand:hover span {
+    color: #4a5dff; /* Change color of text on hover */
+}
+
+#content-container{
+    width: 100vw;
+    
+    margin-bottom: auto;
+    overflow-x: hidden;
+}
+
+.card-div{
+    align-items: center;
+    justify-content: center;
+}
+
+#content-container .card{
+    width: 80%;
+    
+}
+
+.table thead tr th{
+    background-color: #D2D6FB !important; 
+    color: rgb(0, 0, 0) !important;
+    
+  }
+  .table {
+    width: 80% !important;
+    border: 0.1px solid rgb(0, 0, 0) !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+  }
+  
+  .table thead tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+    padding-right: 0;
+  }
+  
+  .table thead tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+  }
+  
+  .table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+  }
+  
+  .table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+  }
+  .table>:not(caption)>*>* {
+    padding: 1rem 4.399999999999999rem;
+    background-color: var(--mdb-table-bg);
+    border-bottom-width: 1px;
+    box-shadow: inset 0 0 0 9999px var(--mdb-table-accent-bg);
+  }
+
+footer{
+    bottom: 0;
+}
