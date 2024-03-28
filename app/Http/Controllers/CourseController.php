@@ -7,6 +7,25 @@ use App\Models\Course;
 
 class CourseController extends Controller
 {
+
+    //View List
+    public function viewCoursesList()
+    {
+        try {
+            //Get All Courses
+            $course = Course::all();
+            return view('manageCourse/viewListOfCourse', compact('course'));
+
+            //Single data
+            // $course = Course::where('id', 1)->first(); // only one result
+            //  $course = Course::where('id', 1)->get();    // result more than one
+
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+    }
+
+
     //Create
     public function createCourse(Request $request)
     {
@@ -19,8 +38,7 @@ class CourseController extends Controller
                 'course_description' => 'required|max:255'
             ]);
 
-            if(!$validate)
-            {
+            if (!$validate) {
                 return redirect()->back()->with('error', 'Validation Error');
             }
 
@@ -33,43 +51,26 @@ class CourseController extends Controller
             $course->course_description = $request->course_description;
             $course->save();
 
-            return view('');
-
+            return redirect()->route('viewCoursesList')->with('success', 'Course Added Successfully');
         } catch (\Throwable $th) {
 
             return redirect()->back()->with('error', $th->getMessage());
         }
     }
 
-    //View List
-    public function viewCoursesList(){
-        try {
-            //Get All Courses
-            $course = Course::all();
-            return view('course_list', compact('course'));
 
-            //Single data
-           // $course = Course::where('id', 1)->first(); // only one result
-          //  $course = Course::where('id', 1)->get();    // result more than one
-
-        } catch (\Throwable $th) {
-            return redirect()->back()->with('error', $th->getMessage());
-        }
-    }
 
     //Delete
-    public function deleteCourse($id){
+    public function deleteCourse($id)
+    {
         try {
             //Delete Course
             $course = Course::find($id);
             $course->delete();
 
             return redirect()->back()->with('success', 'Course Deleted Successfully');
-
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }
     }
-
-
 }

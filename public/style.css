@@ -8,6 +8,7 @@ body{
     font-family: 'Nunito', sans-serif;
     background: #dadada;
     height: 100vh;
+    overflow-x: hidden;
 }
 
 a.navbar-brand svg{

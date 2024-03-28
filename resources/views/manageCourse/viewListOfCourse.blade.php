@@ -37,20 +37,23 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Navbar brand -->
                 <a class="navbar-brand mt-2 mt-lg-0" href="#" sty>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-journals" viewBox="0 0 16 16">
-                    <path d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2"/>
-                    <path d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0"/>
-                  </svg> <span style="font-size: 18px"> Course Registration System</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
+                        class="bi bi-journals" viewBox="0 0 16 16">
+                        <path
+                            d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2" />
+                        <path
+                            d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0" />
+                    </svg> <span style="font-size: 18px"> Course Registration System</span>
                 </a>
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Dashboard</a>
+                        <a class="nav-link" href="{{ route('viewCoursesList') }}">Dashboard</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('newCourse') }}">Add Course</a>
                     </li>
-                   
+
                 </ul>
                 <!-- Left links -->
             </div>
@@ -113,7 +116,7 @@
     <!-- Content -->
     <div class="container-fluid" id="content-container">
         <div class="d-flex card-div">
-            <div class="card mt-5" style="height: 72vh">
+            <div class="card mt-5 pb-5">
                 <div class="card-body">
                     <h5 class="card-title text-center">Course List</h5>
                     <div class="d-flex justify-content-center">
@@ -126,24 +129,25 @@
                                     <th>Course Code</th>
                                     <th>Course Name</th>
                                     <th>Credit Hour</th>
-                              
+                                    <th>Course Description</th>
                                     <th class="lastcol">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
 
-                                <tr>
-                                    <td class="firstcol">1</td>
-                                    <td>Ali</td>
-                                    <td>123456789012</td>
-                                    <td>Not Registered</td>
-                            
-                                    <td class="lastcol d-flex pt-5 gap-3">
-                                        <a href="#" class="btn btn-primary">View</a>
-                                        <a href="#" class="btn btn-success">Edit</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
-                                    </td>
-                                </tr>
+                                @foreach ($course as $item)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                       
+                                        <td>{{ $item->course_code }}</td>
+                                        <td>{{ $item->course_name }}</td>
+                                        <td>{{ $item->course_credit }}</td>
+                                        <td>{{ $item->course_description }}</td>
+                                        <td>
+                                          <button type="button" class="btn btn-danger" data-mdb-ripple-init>Delete</button>
+                                        </td>
+                                    </tr>
+                                @endforeach
 
                             </tbody>
                         </table>

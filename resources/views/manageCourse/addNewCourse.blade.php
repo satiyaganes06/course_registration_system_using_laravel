@@ -45,7 +45,7 @@
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Dashboard</a>
+                        <a class="nav-link"  href="{{ route('viewCoursesList')}}">Dashboard</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('newCourse') }}">Add Course</a>
@@ -116,65 +116,44 @@
             <div class="card mt-5" style="height: 72vh">
                 <div class="card-body">
                     <h5 class="card-title text-center">Course List</h5>
-                    <form>
-                        <!-- 2 column grid layout with text inputs for the first and last names -->
+                    <form action="{{ route('createCourse') }}" method="POST">
+                        @csrf
+                       
                         <div class="row mb-4">
                           <div class="col">
                             <div data-mdb-input-init class="form-outline">
-                              <input type="text" id="form3Example1" class="form-control" />
-                              <label class="form-label" for="form3Example1">First name</label>
+                              <input type="text" id="course_code" name="course_code" class="form-control" />
+                              <label class="form-label" for="course_code">Course Code</label>
                             </div>
                           </div>
-                          <div class="col">
-                            <div data-mdb-input-init class="form-outline">
-                              <input type="text" id="form3Example2" class="form-control" />
-                              <label class="form-label" for="form3Example2">Last name</label>
-                            </div>
+                          
+                        </div>
+                      
+                       
+                        <div data-mdb-input-init class="form-outline mb-4">
+                          <input type="text" id="course_name" name="course_name" class="form-control" />
+                          <label class="form-label" for="course_name">Course Name</label>
+                        </div>
+                      
+                       
+                        <div data-mdb-input-init class="form-outline mb-4">
+                          <input type="text" id="course_credit" name="course_credit" class="form-control" />
+                          <label class="form-label" for="course_credit">Credit Hour</label>
+                        </div>
+
+                           
+                        <div data-mdb-input-init class="form-outline mb-4">
+                            <input type="text" id="course_description" name="course_description" class="form-control" />
+                            <label class="form-label" for="course_description">Course Description</label>
                           </div>
-                        </div>
+                        
                       
-                        <!-- Email input -->
-                        <div data-mdb-input-init class="form-outline mb-4">
-                          <input type="email" id="form3Example3" class="form-control" />
-                          <label class="form-label" for="form3Example3">Email address</label>
-                        </div>
-                      
-                        <!-- Password input -->
-                        <div data-mdb-input-init class="form-outline mb-4">
-                          <input type="password" id="form3Example4" class="form-control" />
-                          <label class="form-label" for="form3Example4">Password</label>
-                        </div>
-                      
-                        <!-- Checkbox -->
-                        <div class="form-check d-flex justify-content-center mb-4">
-                          <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
-                          <label class="form-check-label" for="form2Example33">
-                            Subscribe to our newsletter
-                          </label>
-                        </div>
+                       
                       
                         <!-- Submit button -->
-                        <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block mb-4">Sign up</button>
-                      
-                        <!-- Register buttons -->
-                        <div class="text-center">
-                          <p>or sign up with:</p>
-                          <button data-mdb-ripple-init type="button" class="btn btn-secondary btn-floating mx-1">
-                            <i class="fab fa-facebook-f"></i>
-                          </button>
-                      
-                          <button data-mdb-ripple-init type="button" class="btn btn-secondary btn-floating mx-1">
-                            <i class="fab fa-google"></i>
-                          </button>
-                      
-                          <button data-mdb-ripple-init type="button" class="btn btn-secondary btn-floating mx-1">
-                            <i class="fab fa-twitter"></i>
-                          </button>
-                      
-                          <button data-mdb-ripple-init type="button" class="btn btn-secondary btn-floating mx-1">
-                            <i class="fab fa-github"></i>
-                          </button>
-                        </div>
+                        <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+        
+                        
                       </form>
                     
                 </div>
