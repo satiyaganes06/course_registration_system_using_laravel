@@ -67,12 +67,30 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 
 - Route
+  
 - env
+  # sqlite -> mysql
 - Migration
   # User table by defult is created.
   # Create course table
-    # php artisan make:migration create course table
+    # php artisan make:migration create_course_table
+    # php artisan migrate
+    # php artisan migrate:fresh
+
+- Model
+  
 
 - CRUD
+  # Create controller
+    # php artisan make:controller CourseController
+    
 - Auth
+
 - Github
+
+
+
+
+After pull from github
+composer install
+php artisan key:generate

@@ -16,7 +16,8 @@ return new class extends Migration
         * course_name
         * course_code
         * course_credit
-        * course_description
+        * course_description->nullable
+
       */
     public function up(): void
     {
