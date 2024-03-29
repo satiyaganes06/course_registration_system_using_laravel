@@ -37,23 +37,20 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Navbar brand -->
                 <a class="navbar-brand mt-2 mt-lg-0" href="#" sty>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
-                        class="bi bi-journals" viewBox="0 0 16 16">
-                        <path
-                            d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2" />
-                        <path
-                            d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0" />
-                    </svg> <span style="font-size: 18px"> Course Registration System</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-journals" viewBox="0 0 16 16">
+                    <path d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2"/>
+                    <path d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0"/>
+                  </svg> <span style="font-size: 18px"> Course Registration System</span>
                 </a>
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('viewCoursesList') }}">Dashboard</a>
+                        <a class="nav-link"  href="{{ route('viewCoursesList')}}">Dashboard</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('newCourse') }}">Add Course</a>
                     </li>
-
+                   
                 </ul>
                 <!-- Left links -->
             </div>
@@ -116,42 +113,49 @@
     <!-- Content -->
     <div class="container-fluid" id="content-container">
         <div class="d-flex card-div">
-            <div class="card mt-5 pb-5">
+            <div class="card mt-5" style="height: 72vh">
                 <div class="card-body">
                     <h5 class="card-title text-center">Course List</h5>
-                    <div class="d-flex justify-content-center">
-                        <table class="table align-middle mb-0 bg-white mt-5 table-responsive-sm table-hover">
+                    <form action="{{ route('createCourse') }}" method="POST">
+                        @csrf
+                       
+                        <div class="row mb-4">
+                          <div class="col">
+                            <div data-mdb-input-init class="form-outline">
+                              <input type="text" id="course_code" name="course_code" class="form-control" />
+                              <label class="form-label" for="course_code">Course Code</label>
+                            </div>
+                          </div>
+                          
+                        </div>
+                      
+                       
+                        <div data-mdb-input-init class="form-outline mb-4">
+                          <input type="text" id="course_name" name="course_name" class="form-control" />
+                          <label class="form-label" for="course_name">Course Name</label>
+                        </div>
+                      
+                       
+                        <div data-mdb-input-init class="form-outline mb-4">
+                          <input type="text" id="course_credit" name="course_credit" class="form-control" />
+                          <label class="form-label" for="course_credit">Credit Hour</label>
+                        </div>
 
-
-                            <thead>
-                                <tr>
-                                    <th class="firstcol">No</th>
-                                    <th>Course Code</th>
-                                    <th>Course Name</th>
-                                    <th>Credit Hour</th>
-                                    <th>Course Description</th>
-                                    <th class="lastcol">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                @foreach ($course as $item)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                       
-                                        <td>{{ $item->course_code }}</td>
-                                        <td>{{ $item->course_name }}</td>
-                                        <td>{{ $item->course_credit }}</td>
-                                        <td>{{ $item->course_description }}</td>
-                                        <td>
-                                          <button type="button" class="btn btn-danger" data-mdb-ripple-init>Delete</button>
-                                        </td>
-                                    </tr>
-                                @endforeach
-
-                            </tbody>
-                        </table>
-                    </div>
+                           
+                        <div data-mdb-input-init class="form-outline mb-4">
+                            <input type="text" id="course_description" name="course_description" class="form-control" />
+                            <label class="form-label" for="course_description">Course Description</label>
+                          </div>
+                        
+                      
+                       
+                      
+                        <!-- Submit button -->
+                        <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+        
+                        
+                      </form>
+                    
                 </div>
             </div>
         </div>
