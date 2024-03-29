@@ -21,7 +21,7 @@ Route::post('/register', [Auth::class, 'register'])->name('register');
 
 Route::get('/logout', [Auth::class, 'logout'])->name('logout');
 
-Route::get('view-course', [CourseController::class, 'viewCoursesList'])->name('viewCoursesList');
+Route::get('view-course', [CourseController::class, 'viewCoursesList'])->name('viewCoursesList')->middleware('auth');
 
 
 Route::get('/add-course', function () {

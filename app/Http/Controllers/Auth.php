@@ -56,7 +56,7 @@ class Auth extends Controller
     public function logout()
     {
         authenticate::logout();
-        return redirect()->route('login');
+        return redirect()->route('getloginpage');
     }
 
     //Register
