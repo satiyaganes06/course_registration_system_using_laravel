@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth as authenticate;
 use Illuminate\Support\Facades\Hash;
 
 class Auth extends Controller
@@ -38,12 +39,12 @@ class Auth extends Controller
             }
 
             //Login
-            Auth::login($user);
+            authenticate::login($user);
 
             //Saving User Type
             session(['user-type' => $user['user-type']]);
 
-            return redirect()->route('dashboard');
+            return redirect()->route('viewCoursesList');
 
         } catch (\Throwable $th) {
 
@@ -90,7 +91,7 @@ class Auth extends Controller
             $user->password = Hash::make($request->password);
             $user->save();
 
-            return redirect()->route('login');
+            return redirect()->route('getloginpage');
 
         } catch (\Throwable $th) {
 
