@@ -78,12 +78,13 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
     # php artisan migrate:fresh
 
 - Model
-  
+  # Create Model 
+    # php artisan make:model Course
 
 - CRUD
   # Create controller
     # php artisan make:controller CourseController
-    
+
 - Auth
 
 - Github
