@@ -15,7 +15,11 @@ Route::get('/register', function () {
     return view('manageUserAuth/register');
 })->name('register');
 
+
+
 Route::post('/register', [Auth::class, 'register'])->name('register');
+
+Route::get('/logout', [Auth::class, 'logout'])->name('logout');
 
 Route::get('view-course', [CourseController::class, 'viewCoursesList'])->name('viewCoursesList');
 

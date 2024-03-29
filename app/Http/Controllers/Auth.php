@@ -55,7 +55,7 @@ class Auth extends Controller
     //Logout
     public function logout()
     {
-        Auth::logout();
+        authenticate::logout();
         return redirect()->route('login');
     }
 
